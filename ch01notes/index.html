@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chapter 01 Notes - Lectures on the Fourier Transform and Its Applications</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 01 Notes";
+        var mkdocs_page_input_path = "ch01notes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Lectures on the Fourier Transform and Its Applications
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Chapter 01 Notes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#11-choices-welcome-aboard">1.1 Choices: Welcome Aboard</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#12">1.2</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#121-time-and-space">1.2.1. Time and space.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#122-definitions-examples-and-things-to-come">1.2.2. Definitions, examples, and things to come.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#123-the-building-blocks-a-few-more-examples">1.2.3. The building blocks: A few more examples.</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Lectures on the Fourier Transform and Its Applications</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li class="breadcrumb-item active">Chapter 01 Notes</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/eroicaleo/fourier-transform/blob/main/docs/ch01notes.md" class="icon icon-github"> Edit on Github</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="1-fourier-series">1. Fourier Series</h1>
+<h2 id="11-choices-welcome-aboard">1.1 Choices: Welcome Aboard</h2>
+<ul>
+<li>The question of convergence of Fourier series, believe it or not, led 
+  G. Cantor near the turn of the 20th century to investigate and invent 
+  the theory of infinite sets and to distinguish diﬀerent cardinalities 
+  of infinite sets.</li>
+</ul>
+<h2 id="12">1.2</h2>
+<h3 id="121-time-and-space">1.2.1. Time and space.</h3>
+<p>The frequency and wavelength are related through the equation <script type="math/tex">v = λν</script>, which is the
+same as speed = distance/time.</p>
+<p>More on spatial periodicity.</p>
+<ul>
+<li>a crystal has a regular, repeating 
+  pattern of atoms in space; the 
+  arrangement of atoms is called a lattice. 
+  The function that describes the electron 
+  density distribution of the crystal is 
+  then a periodic function of the spatial 
+  variables, in three dimensions, that 
+  describes the crystal.</li>
+</ul>
+<h3 id="122-definitions-examples-and-things-to-come">1.2.2. Definitions, examples, and things to come.</h3>
+<p>
+<script type="math/tex">f(t)</script> is defined on <script type="math/tex">\mathbb{R}</script>. The 
+smallest <script type="math/tex">T</script> such that</p>
+<p>
+<script type="math/tex; mode=display">f(t+T) = f(t)</script>
+</p>
+<p>is called the <em>fundamental period</em> of the 
+function.</p>
+<ul>
+<li>Is the sum of two periodic functions periodic?</li>
+</ul>
+<p>No, consider <script type="math/tex">\cos t</script> and <script type="math/tex">\cos \sqrt[]{2}t</script>.</p>
+<h3 id="123-the-building-blocks-a-few-more-examples">1.2.3. The building blocks: A few more examples.</h3>
+<p>The state of the harmonic oscillator system 
+is described by a single sinusoid, say of 
+the form</p>
+<p>
+<script type="math/tex; mode=display"> 
+A \sin (2 \pi \nu t + \phi )
+</script>
+</p>
+<p>The period is <script type="math/tex">\nu</script>.</p>
+<p>When Fourier consider the problem when a
+ring is heated up, he came to the idea that
+the distribution of temperature can be
+modeled as a sum of sinusoids</p>
+<p>
+<script type="math/tex; mode=display"> 
+\sum_{n=1}^{N}
+A_n \sin (n \theta + \phi_n)
+</script>
+</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
