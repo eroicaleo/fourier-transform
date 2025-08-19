@@ -58,7 +58,41 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#13-it-all-adds-up">1.3 It All Adds Up</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#using-complex-exponentials">Using complex exponentials.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#131-lost-at-c">1.3.1. Lost at c.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#132-fourier-coefficients">1.3.2. Fourier coeﬃcients.</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#symmetry-relations">Symmetry relations.</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#133-period-frequencies-and-spectrum">1.3.3. Period, frequencies, and spectrum.</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#viewing-a-signal-why-do-musical-instruments-sound-different">Viewing a signal: Why do musical instruments sound diﬀerent?</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#134-changing-the-period-and-another-reciprocal-relationship">1.3.4. Changing the period, and another reciprocal relationship.</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#time-domain-frequency-domain-reciprocity">Time domain – frequency domain reciprocity.</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
     </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ch01ex/">Chapter 01 Exercises</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../appendix-b/">Appendix B</a>
                 </li>
               </ul>
       </div>
@@ -141,11 +175,414 @@ modeled as a sum of sinusoids</p>
 A_n \sin (n \theta + \phi_n)
 </script>
 </p>
+<h2 id="13-it-all-adds-up">1.3 It All Adds Up</h2>
+<p>It's a little bit awkward to use the above equation</p>
+<p>
+<script type="math/tex; mode=display"> 
+\sum_{n=1}^{N}
+A_n \sin (2 \pi n t + \phi_n)
+</script>
+</p>
+<p>It’s more common to write a general trigonometric sum as</p>
+<p>
+<script type="math/tex; mode=display">
+\tag{1-3-1}
+\frac{a_0}{2} +
+\sum_{n = 1}^{N} a_n \cos (2πnt) + b_n \sin (2πnt)
+</script>
+</p>
+<p>The above 2 equations are the same, because we have
+<script type="math/tex">\sin(α+β) = \sinα\cosβ +\cosα\sinβ</script>.</p>
+<p>
+<script type="math/tex; mode=display"> 
+\sin (2 \pi n t + \phi_n) = \\
+\sin (2 \pi n t) \cos (\phi_n) + \cos (2 \pi n t) \sin (\phi_n)
+</script>
+</p>
+<p>And let <script type="math/tex">a_n = \sin (\phi_n), b_n = \cos (\phi_n)</script>, then
+we can see they are the same.</p>
+<h4 id="using-complex-exponentials">Using complex exponentials.</h4>
+<p>Now from Appendix B, we know</p>
+<p>
+<script type="math/tex; mode=display"> 
+\cos (2 \pi n t) =
+\frac{
+  e^{2πint} + e^{-2πint}
+}{2},
+\quad
+\sin (2 \pi n t) =
+\frac{
+  e^{2πint} - e^{-2πint}
+}{2i}
+</script>
+</p>
+<p>Then we can rearrange and simplify the equation (1-3-1).</p>
+<p>
+<script type="math/tex; mode=display"> 
+\sum_{n = -N}^{N} c_n e^{2πint} \\
+c_0 = \frac{a_0}{2} \\
+c_n = a_n - i b_n, \text{ for } n > 0,\\
+c_n = a_n + i b_n, \text{ for } n < 0.\\
+</script>
+</p>
+<p>Let</p>
+<p>
+<script type="math/tex; mode=display"> 
+f(t) = \sum_{n = -N}^{N} c_n e^{2πint}
+</script>
+</p>
+<p>Note, <script type="math/tex">c_n</script> can be complex numbers. If <script type="math/tex">f(t)</script> is real,
+then</p>
+<p>
+<script type="math/tex; mode=display"> 
+\overline{f(t)} = \sum_{n = -N}^{N} \overline{c_n e^{2πint}}
+= \sum_{n = -N}^{N} \overline{c_n} e^{-2πint} = f(t)
+</script>
+</p>
+<p>So we have</p>
+<p>
+<script type="math/tex; mode=display"> 
+\overline{c_n} = c_{-n}
+</script>
+</p>
+<p>On the other hand, if <script type="math/tex">c_n</script> satisfy <script type="math/tex">\overline{c_n} = c_{-n}</script>,</p>
+<p>
+<script type="math/tex; mode=display"> 
+f(t) = \sum_{n = -N}^{N} c_n e^{2πint} \\
+= c_0 + \sum_{n = 1}^{N} c_n e^{2πint} + c_{-n} e^{-2πint} \\
+= c_0 + \sum_{n = 1}^{N} 2\Re(c_n e^{2πint}) \\
+= c_0 + \Re\left\{ \sum_{n = 1}^{N} c_n e^{2πint} \right\}
+</script>
+</p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+<h3 id="131-lost-at-c">1.3.1. Lost at c.</h3>
+<p>Let</p>
+<p>
+<script type="math/tex; mode=display"> 
+f(t) = \sum_{n = -N}^{N} c_n e^{2πint}
+</script>
+</p>
+<p>and we want to solve <script type="math/tex">c_k</script>. Rearrange it a little bit</p>
+<p>
+<script type="math/tex; mode=display"> 
+c_k = e^{-2πikt} f(t) - e^{-2πikt} \sum_{n \neq k} c_n e^{2πint} \\
+= e^{-2πikt} f(t) - \sum_{n \neq k} c_n e^{2πi(n-k)t}
+</script>
+</p>
+<blockquote>
+<p>This is as far as algebra will take us, and when algebra is 
+exhausted, the desperate mathematician will turn to calculus,
+i.e., to diﬀerentiation or integration.
+Here’s a hint: diﬀerentiation won’t get you anywhere.</p>
+</blockquote>
+<p>Another idea is needed, and that idea is integrating both sides from 0 to 1.</p>
+<p>Note</p>
+<p>
+<script type="math/tex; mode=display"> 
+\int_{0}^{1} e^{2πi(n-k)t} dt = \\
+\frac{1}{2πi(n-k)} e^{2πi(n-k)t} \bigg|_{0}^{1} = \\
+\frac{1}{2πi(n-k)} (e^{2πi(n-k)} - 1) = 0
+</script>
+</p>
+<p>So</p>
+<p>
+<script type="math/tex; mode=display"> 
+c_k = \int_{0}^{1} e^{-2πikt} f(t) dt
+</script>
+</p>
+<p>Let’s summarize and be careful to note what we’ve done here, and 
+what we haven’t done. We’ve shown that if we can write a periodic 
+function <script type="math/tex">f(t)</script> of period <script type="math/tex">1</script> as a sum</p>
+<p>
+<script type="math/tex; mode=display"> 
+f(t) = \sum_{n = -N}^{N} c_n e^{2πint}
+</script>
+</p>
+<p>then the coeﬃcients <script type="math/tex">c_n</script> must be given by</p>
+<p>
+<script type="math/tex; mode=display"> 
+c_n = \int_{0}^{1} e^{-2πint} f(t) dt.
+</script>
+</p>
+<p>We have not shown that every periodic function can be expressed 
+this way.</p>
+<p>If we assume <script type="math/tex">f(t)</script> is real, then</p>
+<p>
+<script type="math/tex; mode=display"> 
+\overline{c_n} =
+\overline{\int_{0}^{1} e^{-2πint} f(t) dt} =
+\int_{0}^{1} \overline{e^{-2πint} f(t) dt} = \\
+\int_{0}^{1} \overline{e^{-2πint}} f(t) dt = \\
+\int_{0}^{1} e^{2πint} f(t) dt = c_{-n}
+</script>
+</p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+<h3 id="132-fourier-coefficients">1.3.2. Fourier coeﬃcients.</h3>
+<p>This sum is called Fourier Series</p>
+<p>
+<script type="math/tex; mode=display"> 
+\sum_{n = -N}^{N} c_n e^{2πint}
+</script>
+</p>
+<p>Fourier coefficients, hip version</p>
+<p>
+<script type="math/tex; mode=display"> 
+\hat{f}(n) = \int_{0}^{1} e^{-2πint} f(t) dt
+</script>
+</p>
+<p>The next step is to show given any <script type="math/tex">a</script>,</p>
+<p>
+<script type="math/tex; mode=display"> 
+\hat{f}(n) = \int_{a}^{a+1} e^{-2πint} f(t) dt
+</script>
+</p>
+<p>In "Understanding Analysis", we learned that the 2nd part
+of The Fundamental Theorem of Calculus, if <script type="math/tex">g(x)</script> is integrable,
+and <script type="math/tex">G(x) = \int_{a}^{x} g(x)</script>. If <script type="math/tex">g(x)</script> is continuous at <script type="math/tex">x</script>,
+then <script type="math/tex">G'(x) = g(x)</script>.</p>
+<p>Then let </p>
+<p>
+<script type="math/tex; mode=display"> 
+G(a) = \int_{0}^{a} g(x) \\
+H(a) = \int_{0}^{a+1} g(x)
+</script>
+</p>
+<p>Then</p>
+<p>
+<script type="math/tex; mode=display"> 
+G'(a) = g(a), H'(a) = G'(a+1) = g(a+1)
+</script>
+</p>
+<p>So <script type="math/tex">\frac{d}{da} \int_{a}^{a+1} g(x) = g(a+1) - g(a)</script>.</p>
+<p>We assume this is also true for the complex function.
+Then</p>
+<p>
+<script type="math/tex; mode=display"> 
+\frac{d}{da} \hat{f}(n) =
+e^{-2πint} f(t) \bigg|_{a}^{a+1} \\
+= e^{-2πin(a+1)} f(a+1) - e^{-2πina} f(a) \\
+= e^{-2πin} e^{-2πina} f(a+1) - e^{-2πina} f(a) \\
+= e^{-2πina} f(a+1) - e^{-2πina} f(a) \\
+= 0 \\
+</script>
+</p>
+<p>That means <script type="math/tex">\hat{f}(n)</script> is independent of <script type="math/tex">a</script>.</p>
+<p>There are times when the following is helpful — integrating over a symmetric interval, that is.</p>
+<p>
+<script type="math/tex; mode=display"> 
+\int_{-1/2}^{1/2} e^{-2πint} f(t)dt
+</script>
+</p>
+<h4 id="symmetry-relations">Symmetry relations.</h4>
+<p>If <script type="math/tex">f(t)</script> is real, we have seen</p>
+<p>
+<script type="math/tex; mode=display"> 
+\overline{c_n} = c_{-n} \Leftrightarrow 
+\overline{\hat{f}(n)} = \hat{f}(-n) \\
+\Rightarrow \\
+|\overline{\hat{f}(n)}| = |\hat{f}(-n)|
+</script>
+</p>
+<p>So the magnitude of the Fourier coeﬃcients is
+an even function of <script type="math/tex">n</script>.</p>
+<p>Now assume <script type="math/tex">f(t)</script> is even function
+We have</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{split}
+\hat{f}(-n) &= \int_{0}^{1} e^{-2πi(-n)t} f(t) dt \\
+&= \int_{0}^{1} e^{-2πi(-n)t} f(-t) dt
+\end{split}
+</script>
+</p>
+<p>Now let <script type="math/tex">t = g(s) = -s</script> and recall the change-of-variable formula</p>
+<p>
+<script type="math/tex; mode=display"> 
+\int_{a}^{b} f(g(x)) g'(x) dx =
+\int_{g(a)}^{g(b)} f(t) dt
+</script>
+</p>
+<p>We have</p>
+<p>
+<script type="math/tex; mode=display">
+\int_{0}^{1} e^{-2πi(-n)t} f(t) dt = 
+\int_{0}^{-1} e^{-2πi(-n)(-s)} f(-s) g'(s) ds\\
+ = -\int_{0}^{-1} e^{-2πins} f(s) ds\\
+ = \int_{-1}^{0} e^{-2πins} f(s) ds\\
+ = \hat{f}(n)
+</script>
+</p>
+<p>So we have</p>
+<p>
+<script type="math/tex; mode=display"> 
+\hat{f}(-n) = \hat{f}(n)
+</script>
+</p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+<ul>
+<li>If <script type="math/tex">f(t)</script> is even, then the Fourier coeﬃcients <script type="math/tex">\hat{f}(n)</script> are also even.</li>
+<li>If <script type="math/tex">f(t)</script> is real and even, then the Fourier coeﬃcients <script type="math/tex">\hat{f}(n)</script> are also real and even.</li>
+</ul>
+<p>Now assume <script type="math/tex">f(t)</script> is odd function.
+We have</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{split}
+\hat{f}(-n)
+&= \int_{0}^{1} e^{-2πi(-n)t} f(t) dt \\
+&= -\int_{0}^{-1} e^{-2πi(-n)(-s)} f(-s) dt \\
+&= \int_{0}^{-1} e^{-2πins} f(s) dt \\
+&= -\int_{-1}^{0} e^{-2πins} f(s) dt \\
+&= - \hat{f}(n)
+\end{split}
+</script>
+</p>
+<ul>
+<li>If <script type="math/tex">f(t)</script> is odd, then the Fourier coeﬃcients <script type="math/tex">\hat{f}(n)</script> are also odd.</li>
+<li>If <script type="math/tex">f(t)</script> is real and odd, then the Fourier coeﬃcients <script type="math/tex">\hat{f}(n)</script> are odd and purely imaginary.</li>
+</ul>
+<blockquote>
+<p>If we think of <script type="math/tex">\hat{f}(n) = \int_{0}^{1} e^{-2πint}f(t)dt</script>
+as a transform of <script type="math/tex">f</script> to a new function <script type="math/tex">\hat{f}(n)</script>.
+While <script type="math/tex">f(t)</script> is defined for a continuous variable <script type="math/tex">t</script>,
+the transformed function <script type="math/tex">\hat{f}(n)</script> is defined on the
+integers. <strong>There are reasons for this that are much deeper
+than simply solving for the unknown coeﬃcients in a
+Fourier series.</strong></p>
+</blockquote>
+<h3 id="133-period-frequencies-and-spectrum">1.3.3. Period, frequencies, and spectrum.</h3>
+<p>We’re assuming that <script type="math/tex">f(t)</script> is a real, periodic signal of period
+<script type="math/tex">1</script> with a representation as the series</p>
+<p>
+<script type="math/tex; mode=display"> 
+f(t) = \sum_{n = -\infty }^{\infty}
+\hat{f}(n) e^{2πint}
+</script>
+</p>
+<ul>
+<li>Rather, being able to write f(t) as a Fourier series means that
+  it is synthesized from many harmonics, many frequencies, 
+  positive and negative, perhaps an infinite number.</li>
+<li>The set of frequencies n that are present in a given 
+  periodic signal is the spectrum of the signal.</li>
+</ul>
+<p>For a real signal, <script type="math/tex">\overline{\hat{f}(n)} = \hat{f}(-n)</script>.
+Then the coeﬃcients <script type="math/tex">\hat{f}(n)</script> and <script type="math/tex">\hat{f}(-n)</script> are either both 
+zero or both nonzero.</p>
+<p>If the coeﬃcients are all zero from some point on, say
+<script type="math/tex">\hat{f}(n) = 0 \text{ for } |n| > N</script>, it’s common to say that the 
+signal has no spectrum from that point on. One also
+says in this case that the signal is bandlimited and that the 
+bandwidth is <script type="math/tex">2N</script>.</p>
+<p>
+<script type="math/tex">|\hat{f}(n)|^2</script> is said to be the energy of
+the (positive and negative) harmonic <script type="math/tex">e^{\pm  2πint}</script>.</p>
+<p>The sequence of squared magnitudes <script type="math/tex">|\hat{f}(n)|^2</script> is called the energy spectrum or the power spectrum.</p>
+<p>Rayleigh’s identity:</p>
+<p>
+<script type="math/tex; mode=display"> 
+\int_{0}^{1} |f(t)|^2 dt =
+\sum_{n = -\infty }^{\infty} |\hat{f}(n)|^2
+</script>
+</p>
+<h4 id="viewing-a-signal-why-do-musical-instruments-sound-different">Viewing a signal: Why do musical instruments sound diﬀerent?</h4>
+<ul>
+<li>
+<p>why do two instruments sound diﬀerent even when they are playing 
+  the same note?</p>
+<ul>
+<li>It’s because the note that an instrument produces is not a 
+  single sinusoid of a single frequency, not a pure A at 440 
+  Hz, for example, but a sum of many sinusoids each of its own
+  frequency and each contributing its own amount of energy.</li>
+<li>two instruments sound diﬀerent because of the diﬀerent
+  harmonics they produce and because of the diﬀerent strengths 
+  of the harmonics.</li>
+</ul>
+</li>
+<li>
+<p>To oversimplify, your inner ear (the cochlea) finds the 
+  harmonics and their amounts (the key is resonance) and
+  passes that data on to your brain to do the synthesis. Nature 
+  knew Fourier analysis all along!</p>
+</li>
+</ul>
+<h3 id="134-changing-the-period-and-another-reciprocal-relationship">1.3.4. Changing the period, and another reciprocal relationship.</h3>
+<p>Suppose <script type="math/tex">f(t)</script> has period <script type="math/tex">T</script>. Then let <script type="math/tex">g(t) = f(Tt)</script>,</p>
+<p>
+<script type="math/tex; mode=display"> 
+g(t+1) = f(T(t+1)) = f(Tt + T) = f(Tt) = g(t)
+</script>
+</p>
+<p>So <script type="math/tex">g</script> has period of <script type="math/tex">1</script>.</p>
+<p>
+<script type="math/tex; mode=display"> 
+g(t) = \sum_{n = -\infty}^{\infty} c_n e^{2πint}
+</script>
+</p>
+<p>Let <script type="math/tex">s = Tt</script>
+</p>
+<p>
+<script type="math/tex; mode=display"> 
+f(s) = g(t) =
+\sum_{n = -\infty}^{\infty} c_n e^{2πint} =
+\sum_{n = -\infty}^{\infty} c_n e^{2πins/T}
+</script>
+</p>
+<p>Also</p>
+<p>
+<script type="math/tex; mode=display"> 
+c_n = \int_{0}^{1} e^{-2πint} g(t) dt \\
+= \frac{1}{T} \int_{0}^{T} e^{-2πin s/T} f(s) ds
+</script>
+</p>
+<p>Sometimes, it's useful to write</p>
+<p>
+<script type="math/tex; mode=display"> 
+c_n
+= \frac{1}{T} \int_{-T/2}^{T/2} e^{-2πin s/T} f(s) ds
+</script>
+</p>
+<p>Or take the harmonics as</p>
+<p>
+<script type="math/tex; mode=display">
+\frac{1}{\sqrt[]{T}} e^{2πint/T}
+\\
+c_n
+= \frac{1}{\sqrt[]{T}} \int_{0}^{T} e^{-2πint/T} f(t) dt
+</script>
+</p>
+<h4 id="time-domain-frequency-domain-reciprocity">Time domain – frequency domain reciprocity.</h4>
+<p>Given</p>
+<p>
+<script type="math/tex; mode=display"> 
+f(t) = \sum_{n = -\infty}^{\infty}
+c_n e^{2πint/T}
+</script>
+</p>
+<ul>
+<li>In the time domain the signal repeats after T seconds, while the 
+  points in the spectrum are <script type="math/tex">0, ±1/T, ±2/T, ...</script>, which are 
+  spaced <script type="math/tex">1/T</script> apart.</li>
+<li>This is worth elevating to an aphorism:<ul>
+<li>The larger the period in time, the smaller the spacing in
+  the spectrum. The smaller the period in time, the larger the 
+  spacing in the spectrum.</li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ch01ex/" class="btn btn-neutral float-right" title="Chapter 01 Exercises">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -170,6 +607,8 @@ A_n \sin (n \theta + \phi_n)
     
       <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../ch01ex/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

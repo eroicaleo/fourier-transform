@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chapter 01 Exercises - Lectures on the Fourier Transform and Its Applications</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 01 Exercises";
+        var mkdocs_page_input_path = "ch01ex.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Lectures on the Fourier Transform and Its Applications
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ch01notes/">Chapter 01 Notes</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Chapter 01 Exercises</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#11-playing-with-fourier-series-using-matlab">1.1. Playing with Fourier series using MATLAB</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#12-adding-periodic-functions">1.2. Adding periodic functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#13-periods-of-sums-and-products">1.3 Periods of sums and products</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../appendix-b/">Appendix B</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Lectures on the Fourier Transform and Its Applications</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li class="breadcrumb-item active">Chapter 01 Exercises</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/eroicaleo/fourier-transform/blob/main/docs/ch01ex.md" class="icon icon-github"> Edit on Github</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="1-fourier-series">1. Fourier Series</h1>
+<h2 id="11-playing-with-fourier-series-using-matlab">1.1. Playing with Fourier series using MATLAB</h2>
+<p><strong>Solution</strong>: Since I do not have the matlab code yet,
+I use python to draw the following:</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator
+
+# ex 1.1
+
+# Generate x values from 0 to 10 with a step of 0.1
+t = np.arange(0, 2, 0.01)
+
+# Calculate the amplitude as the sine of the time values
+f = np.zeros_like(t)
+for n in range(5):
+    amp = -15.0 / (1+n);
+    phase = -0.1 * n
+    f += amp * np.sin(2*np.pi*n*t + phase)
+
+# Plot the sine wave
+plt.plot(t, f)
+
+# Add labels and title
+plt.title('Sine wave')
+plt.xlabel('Time')
+plt.ylabel('Amplitude = sin(time)')
+plt.gca().xaxis.set_major_locator(MultipleLocator(0.2))
+
+# Add a grid and a horizontal line at y=0
+plt.grid(True, which='both')
+plt.axhline(y=0, color='k')
+
+# Display the plot
+plt.show()
+</code></pre>
+<p><img alt="" src="../assets/ex0101.png" /></p>
+<h2 id="12-adding-periodic-functions">1.2. Adding periodic functions</h2>
+<p>You can sometimes be misled by thinking too casually about 
+modifying or combining periodic functions: scaling a periodic 
+function results in a periodic
+function; shifting a periodic function results in a periodic 
+function. What about adding?</p>
+<p>(a) Let <script type="math/tex">f(x) = \sin(2πmx) + \sin(2πnx)</script> where <script type="math/tex">n</script> and <script type="math/tex">m</script> are positive integers. Is <script type="math/tex">f(x)</script> periodic? If so, what is its period?</p>
+<p><strong>Solution</strong>:</p>
+<p>Yes, because apprantly <script type="math/tex">f(x+1) = f(x)</script>.
+If <script type="math/tex">d = \gcd(m, n)</script>, then <script type="math/tex">T = \frac{1}{d}</script>.</p>
+<p>I cannot prove it though.</p>
+<p>(b) Let <script type="math/tex">g(x) = \sin(2πpx) + \sin(2πqx)</script> where <script type="math/tex">p</script> and <script type="math/tex">q</script> are 
+positive rational numbers (say <script type="math/tex">p= m/r</script> and <script type="math/tex">q= n/s</script>, as fractions 
+in lowest terms). Is <script type="math/tex">g(x)</script> periodic? If so, what is its period?</p>
+<p><strong>Solution</strong>:</p>
+<p>Yes, the period is</p>
+<p>
+<script type="math/tex; mode=display"> 
+\frac{\text{lcm}(r,s)}{\gcd(m,n)}
+</script>
+</p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+<p>(c) It’s not true that the sum of two periodic functions is 
+periodic. For example, show that <script type="math/tex">f(t) = \cos t+\cos \sqrt[]{2} t</script> 
+is not periodic. (Hint: Suppose by way of contradiction that there 
+is some <script type="math/tex">T</script> such that <script type="math/tex">f(t+T) = f(t)</script>
+for all <script type="math/tex">t</script>. In particular, the maximum value of <script type="math/tex">f(t)</script> repeats. 
+This will lead to a contradiction.)</p>
+<p><strong>Proof</strong>: </p>
+<p>Based on the hint, note that when <script type="math/tex">t=0</script>, <script type="math/tex">f(t)</script> reaches its
+maximum, i.e. <script type="math/tex">2</script>. Note assume <script type="math/tex">f(t+T) = f(t)</script>, especially
+<script type="math/tex">f(T) = f(0) = 2</script> 
+.</p>
+<p>
+<script type="math/tex; mode=display"> 
+T = 2 n \pi \\
+\sqrt[]{2} T = 2 m \pi \\
+</script>
+</p>
+<p>Then we have</p>
+<p>
+<script type="math/tex; mode=display"> 
+\sqrt[]{2} = \frac{m}{n}
+</script>
+</p>
+<p>This is not possible.</p>
+<p>So <script type="math/tex">f(t)</script> is not a periodic function.</p>
+<h2 id="13-periods-of-sums-and-products">1.3 Periods of sums and products</h2>
+<p>Let <script type="math/tex">f(t) = \sin3t+\cos5t</script> and <script type="math/tex">g(t) = \sin3t·\cos5t</script>
+</p>
+<p>(a) What is the period of <script type="math/tex">f(t)</script>?
+Find the Fourier series for <script type="math/tex">f(t)</script>.</p>
+<p><strong>Solution</strong>:</p>
+<p>The period of <script type="math/tex">\sin 3t</script> is <script type="math/tex">2/3 \pi</script>, and the period of <script type="math/tex">\cos5t</script>
+is <script type="math/tex">2/5 \pi</script>. Since <script type="math/tex">3, 5</script> are coprime, then their common period
+has to be <script type="math/tex">2 \pi</script>.</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{split}
+c_n &= \frac{1}{2π} \int_{0}^{2 \pi } \sin 3t · e^{-2πint / (2π)} \\
+&= \frac{1}{2π} \int_{0}^{2 \pi } \sin 3t · e^{-int} \\
+&= \frac{1}{2π} \int_{-\pi}^{\pi} \sin 3t · (\cos (-nt) + i \sin (-nt)) \\
+&= \frac{1}{2π} \int_{-\pi}^{\pi} \sin 3t · (\cos (nt) - i \sin (nt)) \\
+\end{split}
+</script>
+</p>
+<p>We use the conclusion from Understanding Analysis Exercise 8.5.2.</p>
+<p>
+<script type="math/tex; mode=display"> 
+c_n =
+\begin{cases}
+    -i/2 &\text{if }  n = 3  \\
+    i/2 &\text{if } n = -3 \\
+    0 &\text{else}\\
+\end{cases}
+</script>
+</p>
+<p>So</p>
+<p>
+<script type="math/tex; mode=display"> 
+\sin 3t = \frac{i}{2} e^{-3it} - \frac{i}{2} e^{3it}
+</script>
+</p>
+<p>On the hindsight, we can just use the complex number knowledge in
+Appendix B to get this.</p>
+<p>For the same reason</p>
+<p>
+<script type="math/tex; mode=display"> 
+\cos 5t = \frac{1}{2} e^{5it} - \frac{1}{2} e^{-5it}
+</script>
+</p>
+<p>So</p>
+<p>
+<script type="math/tex; mode=display"> 
+\sin 3t + \cos 5t =
+- \frac{1}{2} e^{-5it} + \frac{i}{2} e^{-3it}
+- \frac{i}{2} e^{3it} + \frac{1}{2} e^{5it}
+</script>
+</p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+<p>(b) Find the Fourier series for <script type="math/tex">g(t)</script>. What is the period of
+<script type="math/tex">g(t)</script>? (The period of the product is more interesting. The 
+product repeats every <script type="math/tex">2π</script>, that is, <script type="math/tex">g(t+2π) = g(t)</script>, so the 
+period of <script type="math/tex">g(t)</script> is a divisor of <script type="math/tex">2π</script>. To determine the 
+fundamental frequency of <script type="math/tex">g(t)</script>, we find its Fourier series.)</p>
+<p><strong>Solution</strong>:</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{split}
+\sin3t·\cos5t &=
+\frac{e^{3it} - e^{-3it}}{2i} \cdot
+\frac{e^{5it} + e^{-5it}}{2} \\
+&=\frac{1}{4i}
+(-e^{-8it} + e^{-2it} - e^{2it} + e^{8it})
+\end{split}
+</script>
+</p>
+<p>From this Fourier series, we can see, <script type="math/tex">π</script> is a period.</p>
+<p>
+<script type="math/tex; mode=display"> 
+\sin 3(t+π) \cdot \cos 5(t+π) \\
+= (- \sin 3t) \cdot (-\cos 5(t)) \\
+= \sin3t·\cos5t
+</script>
+</p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ch01notes/" class="btn btn-neutral float-left" title="Chapter 01 Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../appendix-b/" class="btn btn-neutral float-right" title="Appendix B">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ch01notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../appendix-b/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Appendix B - Lectures on the Fourier Transform and Its Applications</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix B";
+        var mkdocs_page_input_path = "appendix-b.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Lectures on the Fourier Transform and Its Applications
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ch01notes/">Chapter 01 Notes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ch01ex/">Chapter 01 Exercises</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Appendix B</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#b1-complex-numbers">B.1. Complex Numbers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#b2-the-complex-exponential-and-eulers-formula">B.2. The Complex Exponential and Euler’s Formula</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#eulers-formula">Euler’s formula</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#consequences-of-eulers-formula">Consequences of Euler’s formula.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#symmetries-of-the-sine-and-cosine-even-and-odd-functions">Symmetries of the sine and cosine: Even and odd functions.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#algebra-and-geometry">Algebra and geometry.</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#b3-further-applications-of-eulers-formula">B.3. Further Applications of Euler’s Formula</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#change-the-amplitude-and-frequency-and-to-include-a-phase-shift">change the amplitude and frequency and to include a phase shift</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sums-of-sinusoids">Sums of sinusoids.</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#problems-and-further-results">Problems and Further Results</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#b1">B.1.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#b2">B.2.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#b3">B.3.</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Lectures on the Fourier Transform and Its Applications</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li class="breadcrumb-item active">Appendix B</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/eroicaleo/fourier-transform/blob/main/docs/appendix-b.md" class="icon icon-github"> Edit on Github</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="appendix-b-complex-numbers-and-complex-exponentials">Appendix B Complex Numbers and Complex Exponentials</h1>
+<h2 id="b1-complex-numbers">B.1. Complex Numbers</h2>
+<p>
+<script type="math/tex; mode=display"> 
+i = \sqrt[]{-1}
+</script>
+</p>
+<p>By the way, read <script type="math/tex">-i</script>  as “minus <script type="math/tex">i</script>” not “negative <script type="math/tex">i</script>.” To say 
+<script type="math/tex">−i</script> is “negative <script type="math/tex">i</script>” would imply that <script type="math/tex">i</script> is positive, and it 
+isn’t. </p>
+<p>This is because we can not have an order on <script type="math/tex">\mathbb{C}</script>.</p>
+<p>The complex conjugate of <script type="math/tex">z = x+iy</script> is <script type="math/tex">\bar{z} = x - iy</script>.</p>
+<p>We have</p>
+<p>
+<script type="math/tex; mode=display"> 
+\overline{z + w} = \overline{z} + \overline{w},
+\overline{zw} = \overline{z}\overline{w},
+\overline{\overline{z}} = z \\
+x = \text{Re} z = \frac{z + \overline{z}}{2} \\
+y = \text{Im} z = \frac{z - \overline{z}}{2i} \\
+</script>
+</p>
+<p>For the integral</p>
+<p>
+<script type="math/tex; mode=display"> 
+\overline{
+\int_{a}^{b}f(t) g(t) dt
+} =
+\int_{a}^{b}
+\overline{f(t)}
+\overline{g(t)} dt
+</script>
+</p>
+<p>We can also right</p>
+<p>
+<script type="math/tex; mode=display"> 
+\left( 
+\int_{a}^{b}f(t) g(t) dt
+\right)^*
+=
+\int_{a}^{b}
+f(t)^* 
+g(t)^*
+dt
+</script>
+</p>
+<p>The magnitude of <script type="math/tex">z = x+iy</script> is</p>
+<p>
+<script type="math/tex; mode=display"> 
+|z| = \sqrt[]{x^2 + y^2}
+</script>
+</p>
+<p>We also have</p>
+<p>
+<script type="math/tex; mode=display"> 
+|z|^2 = z \overline{z} \\
+|z+w|^2 =|z|^2 + 2 \text{Re} \{\overline{z}w\} + |w|^2
+</script>
+</p>
+<p>Polar form</p>
+<p>For <script type="math/tex">z = x + yi</script>, we can also write it as</p>
+<p>
+<script type="math/tex; mode=display"> 
+x + yi = r \cos θ+ i r \sin θ = r (\cos θ+ i \sin θ) 
+</script>
+</p>
+<h2 id="b2-the-complex-exponential-and-eulers-formula">B.2. The Complex Exponential and Euler’s Formula</h2>
+<p>Define</p>
+<p>
+<script type="math/tex; mode=display"> 
+e^z = 1 + z +
+\frac{z^2}{2!} +
+\frac{z^3}{3!} +
+\cdots 
+= \sum_{n = 0}^{\infty} \frac{z^n}{n!}
+</script>
+</p>
+<p>This converges for all <script type="math/tex">z ∈ \mathbb{C}</script>, but we won’t check that.</p>
+<p>Also we have</p>
+<p>
+<script type="math/tex; mode=display"> 
+\overline{e^z} = e^{\bar{z}}
+</script>
+</p>
+<p>To prove</p>
+<p>
+<script type="math/tex; mode=display"> 
+e^{z+w} = e^z e^w
+</script>
+</p>
+<p>Notice if <script type="math/tex">f = e^z</script> then <script type="math/tex">f' = f, f(0) = 1</script>.</p>
+<p>And if we fix <script type="math/tex">w</script>, we have</p>
+<p>
+<script type="math/tex; mode=display"> 
+\frac{d}{dz} e^{w+z} = e^{w+z}
+</script>
+</p>
+<p>From the knowledge of difference equation, we must have</p>
+<p>
+<script type="math/tex; mode=display"> 
+e^{w+z} = c e^z
+</script>
+</p>
+<p>Then plug <script type="math/tex">z = 0</script>, we have <script type="math/tex">c = e^w</script>.</p>
+<h3 id="eulers-formula">Euler’s formula</h3>
+<p>
+<script type="math/tex; mode=display"> 
+f(θ) = e^{i θ} = \cos θ + i \sin θ = g(θ)
+</script>
+</p>
+<p>The left-hand side has only been defined via a series.
+The exponential function in the real case has nothing to do with 
+the trig functions sine and cosine, and why it should have 
+anything to do with them in the complex case is a true wonder.</p>
+<p>Use some results for diﬀerential equations (the results themselves 
+are difficult).</p>
+<p>Note <script type="math/tex">f(0) = 1, f'(θ) = i e^{iθ}</script>, so <script type="math/tex">f'(0) = i</script>.
+Moreover</p>
+<p>
+<script type="math/tex; mode=display"> 
+f''(θ) = - e^{iθ} = -f(θ)
+</script>
+</p>
+<p>i.e. <script type="math/tex">f</script> satisfy</p>
+<p>
+<script type="math/tex; mode=display"> 
+f'' + f = 0, f(0) = 1, f'(0) = i
+</script>
+</p>
+<p>On the other hand</p>
+<p>
+<script type="math/tex; mode=display"> 
+g''(θ) = (-\sin θ + i \cos θ)' = - (\cos θ + i \sin θ) = - g(θ) \\
+</script>
+</p>
+<p>So we have</p>
+<p>
+<script type="math/tex; mode=display"> 
+g'' + g = 0, g(0) = 1, g'(0) = i
+</script>
+</p>
+<p>Thus <script type="math/tex">f</script> and <script type="math/tex">g</script> satisfy the same diﬀerential equation with the 
+same initial conditions; so <script type="math/tex">f</script> and <script type="math/tex">g</script> must be equal. Slick.</p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+<p>Plugging <script type="math/tex">θ = π</script> into Euler’s formula, we have</p>
+<p>
+<script type="math/tex; mode=display"> 
+e^{i \pi} + 1 = 0
+</script>
+</p>
+<p>This is sometimes referred to as the most famous equation in 
+mathematics. It expresses a simple relationship — and why should 
+there be any at all? — between the fundamental numbers <script type="math/tex">e, π, 1,</script> 
+and <script type="math/tex">0</script>, not to mention <script type="math/tex">i</script>. We’ll probably never
+see this most famous equation again, but now we’ve seen it once.</p>
+<h3 id="consequences-of-eulers-formula">Consequences of Euler’s formula.</h3>
+<p>
+<script type="math/tex; mode=display"> 
+z = r (\cos θ + i \sin θ) = r e^{iθ}
+</script>
+</p>
+<p>Then the multiplication of 2 complex numbers is</p>
+<p>
+<script type="math/tex; mode=display"> 
+z_1 z_2 = r_1 r_2
+e^{i(θ_1 + θ_2)}
+</script>
+</p>
+<p>We also have a dead easy way of deriving the addition formulas
+for the sine and cosine</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{split}
+e^{i(α+β)}
+&= e^{iα} e^{iβ} \\
+&= (\cos α + i \sin α)(\cos β + i \sin β) \\
+&=  (\cosα\cosβ−\sinα\sinβ)+i(\sinα\cosβ +\cosα\sinβ)
+\end{split}
+</script>
+</p>
+<p>On the other hand</p>
+<p>
+<script type="math/tex; mode=display"> 
+\begin{split}
+e^{i(α+β)} = \cos (α+β) + i \sin (α+β)
+\end{split}
+</script>
+</p>
+<p>So we have</p>
+<p>
+<script type="math/tex; mode=display">
+\cos(α+β) = \cosα\cosβ−\sinα\sinβ, \\
+\sin(α+β) = \sinα\cosβ +\cosα\sinβ.
+</script>
+</p>
+<p>Quote from the author:</p>
+<p>I went through this derivation because it expresses in a simple 
+way an extremely important principle in mathematics and its 
+applications.</p>
+<ul>
+<li><strong><em>If you can compute the same thing two diﬀerent ways, chances 
+  are you’ve done something significant.</em></strong></li>
+</ul>
+<p>Take this seriously. This maxim appears throughout the course.</p>
+<h3 id="symmetries-of-the-sine-and-cosine-even-and-odd-functions">Symmetries of the sine and cosine: Even and odd functions.</h3>
+<p>Use this</p>
+<p>
+<script type="math/tex; mode=display"> 
+\overline{e^{iθ}} = e^{\overline{iθ}} = e^{-iθ}
+</script>
+</p>
+<p>We have</p>
+<p>
+<script type="math/tex; mode=display"> 
+\cos θ = \frac{e^{iθ} + e^{-iθ}}{2},
+i\sin θ = \frac{e^{iθ} - e^{-iθ}}{2}.
+</script>
+</p>
+<p>Note <script type="math/tex">\cos</script> is an even function and <script type="math/tex">\sin</script> is an odd function.</p>
+<p>Why is this true? There are many ways of seeing it (Taylor series, 
+diﬀerential equations), but here’s one you may not have thought of 
+before, and it fits into a general framework of evenness and 
+oddness that we’ll find useful when discussing symmetries of the 
+Fourier transform.</p>
+<p>Given any function <script type="math/tex">f(x)</script>,</p>
+<p>
+<script type="math/tex; mode=display"> 
+f_e = \frac{f(x) + f(-x)}{2} \\
+f_o = \frac{f(x) - f(-x)}{2}
+</script>
+</p>
+<p>The top one is an even function and the bottom one is an odd
+function.</p>
+<h3 id="algebra-and-geometry">Algebra and geometry.</h3>
+<p>
+<script type="math/tex; mode=display"> 
+|e^{iθ}| = \sqrt[]{
+\cos^2 θ + \sin^2 θ
+} = 1
+</script>
+</p>
+<h2 id="b3-further-applications-of-eulers-formula">B.3. Further Applications of Euler’s Formula</h2>
+<p>For additional applications we’ll replace <script type="math/tex">θ</script> by <script type="math/tex">t</script> and
+think of</p>
+<p>
+<script type="math/tex; mode=display"> 
+e^{it} = \cos t + i \sin t
+</script>
+</p>
+<p>we see that <script type="math/tex">e^{it}</script> is a (complex-valued) parametrization of the 
+circle: the circle is traced out exactly once in the 
+counterclockwise direction as t goes from <script type="math/tex">0</script> to <script type="math/tex">2π</script>.</p>
+<p>For our eﬀorts we prefer to work with</p>
+<p>
+<script type="math/tex; mode=display"> 
+e^{i2πt} = \cos (2πt) + i \sin (2πt)
+</script>
+</p>
+<p>the complex exponential <script type="math/tex">e^{2πit}</script> contains the sinusoids
+<script type="math/tex">\cos 2πt</script> and <script type="math/tex">\sin 2πt</script>, each of frequency 1 Hz.</p>
+<p>With the <script type="math/tex">2π</script>, as <script type="math/tex">t</script> goes from <script type="math/tex">0</script> to <script type="math/tex">1</script> the point <script type="math/tex">e^{2πit}</script> 
+traces out the unit circle exactly once (one cycle) in a counter 
+clockwise direction.</p>
+<p>The units in the exponential <script type="math/tex">e^{2πit}</script> are (as they are in <script type="math/tex">\cos 2πt</script> and <script type="math/tex">\sin 2πt</script>)</p>
+<p>
+<script type="math/tex; mode=display"> 
+e^{
+(2π \text{ radians/cycle}) \cdot
+i \cdot 1 (\text{ cycle/sec}) \cdot
+(t \text{ sec})
+}
+</script>
+</p>
+<p>Without the <script type="math/tex">2π</script> the units in <script type="math/tex">e^{it}</script> are</p>
+<p>
+<script type="math/tex; mode=display"> 
+e^{
+i \cdot (1 \text{ radians/cycle})
+\cdot
+(t \text{ sec})
+}
+</script>
+</p>
+<h3 id="change-the-amplitude-and-frequency-and-to-include-a-phase-shift">change the amplitude and frequency and to include a phase shift</h3>
+<p>The general complex exponential that includes this
+information is then</p>
+<p>
+<script type="math/tex; mode=display"> 
+A e^{i(2πνt + \phi)}
+</script>
+</p>
+<ul>
+<li>Then the point traces out the circle in the counterclockwise direction at a rate of <script type="math/tex">ν</script> cycles per second;</li>
+<li>The phase <script type="math/tex">\phi</script> determines the starting point on the circle, 
+  for at <script type="math/tex">t = 0</script> the point is <script type="math/tex">A e^{i\phi}</script>
+</li>
+</ul>
+<p>In fact, we can write</p>
+<p>
+<script type="math/tex; mode=display"> 
+A e^{i(2πνt + \phi)} = e^{2πiνt} A e^{i\phi}
+</script>
+</p>
+<p>We can think of this as the (initial) vector <script type="math/tex">Ae^{i\phi}</script> set 
+rotating at a frequency <script type="math/tex">ν</script> Hz through
+multiplication by the time-varying phasor <script type="math/tex">e^{2πiνt}</script>.</p>
+<p>What happens when <script type="math/tex">ν</script> is negative? That simply reverses the 
+direction of motion around the circle from counterclockwise to 
+clockwise. The catch phrase is just so:
+* positive frequency means counterclockwise rotation
+* negative frequency means clockwise rotation.</p>
+<h3 id="sums-of-sinusoids">Sums of sinusoids.</h3>
+<p>What one can say about the superposition of two signals?</p>
+<p>
+<script type="math/tex; mode=display"> 
+A_1 \sin (2πνt + \phi_1) +
+A_2 \sin (2πνt + \phi_2)
+</script>
+</p>
+<p>Consider</p>
+<p>
+<script type="math/tex; mode=display"> 
+A_1 e^{i(2πνt + \phi_1)} +
+A_2 e^{i(2πνt + \phi_2)}
+</script>
+</p>
+<p>whose imaginary part is the sum of sinusoids, above. Before 
+messing with the algebra, think geometrically in terms of rotating 
+vectors. At <script type="math/tex">t = 0</script> we have the
+two vectors from the origin to the starting points</p>
+<p>
+<script type="math/tex; mode=display"> 
+z_0 = A_1 e^{iφ_1},
+w_0 = A_2 e^{iφ_2}.
+</script>
+</p>
+<p>Their sum <script type="math/tex">z_0 +w_0</script> is the starting point (or starting vector) 
+for the sum of the two motions. But how do those two starting 
+vectors move? They rotate together at the same rate, the motion of 
+each described by <script type="math/tex">e^{2πiνt}z_0</script> and <script type="math/tex">e^{2πiνt}w_0</script>, respectively.
+Thus their sum also rotates at that rate — think of the whole 
+parallelogram (vector sum) rotating rigidly about the vertex at 
+the origin.</p>
+<p>Now mess with the algebra and arrive at the same result:</p>
+<p>
+<script type="math/tex; mode=display"> 
+A_1 e^{i(2πνt + \phi_1)} +
+A_2 e^{i(2πνt + \phi_2)}
+=
+e^{i2πνt} (
+A_1 e^{i\phi_1} +
+A_2 e^{i\phi_2}
+)
+</script>
+</p>
+<h2 id="problems-and-further-results">Problems and Further Results</h2>
+<h3 id="b1">B.1.</h3>
+<p>If <script type="math/tex">0 ≤ \arg w − \arg z < π</script>, show that the area of the triangle whose vertices are <script type="math/tex">0</script>, <script type="math/tex">z</script>, and <script type="math/tex">w</script> is given by</p>
+<p>
+<script type="math/tex; mode=display"> 
+\frac{1}{2} \Im \{\overline{z}w\}
+</script>
+</p>
+<p><strong>Proof</strong>:</p>
+<p>Assume <script type="math/tex">z, w</script> is shown in the figure below.</p>
+<p>
+<script type="math/tex; mode=display"> 
+w = r_1 e^{iθ_1},
+z = r_2 e^{iθ_2}
+</script>
+</p>
+<p>Then if we rotate the triangle until <script type="math/tex">z</script> is completely on
+<script type="math/tex">x</script>-axis, then we can see the area is</p>
+<p>
+<script type="math/tex; mode=display"> 
+\frac{1}{2} r_2 \cdot r_1 \cdot \sin (θ_1 - θ_2)
+</script>
+</p>
+<p>Also note</p>
+<p>
+<script type="math/tex; mode=display"> 
+\overline{z}w\ = r_2 e^{-iθ_2} r_1 e^{iθ_1} \\
+= r_2 r_1 e^{i(θ_1-θ_2)} \\
+= r_2 r_1 (\cos (θ_1-θ_2) + i \sin (θ_1-θ_2))
+</script>
+</p>
+<p>So we have <script type="math/tex">A = \frac{1}{2}\Im \{\overline{z}w\}</script>.</p>
+<p><img alt="" src="../assets/app_b_1.png" /></p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+<h3 id="b2">B.2.</h3>
+<p>Show that the equation of a line can be written as
+<script type="math/tex">az + \overline{a}\overline{z}+b = 0</script>
+, where <script type="math/tex">a</script> is a complex number and <script type="math/tex">b</script> is real
+(and <script type="math/tex">z = x+iy</script> is the variable). What is the
+slope of the line?</p>
+<p><strong>Solution</strong>:</p>
+<p>Let <script type="math/tex">a = r_a e^{iθ_a}, z = r_z e^{iθ_z}</script>.</p>
+<p>Then</p>
+<p>
+<script type="math/tex; mode=display"> 
+-b = az + \overline{a}\overline{z} = 2 \Re\{az\} = 
+2 r_a r_z \cos (θ_a + θ_z) \\
+\Rightarrow \\
+r_z \cos (θ_a + θ_z) = -\frac{b}{2 r_a}
+</script>
+</p>
+<p><img alt="" src="../assets/app_b_2.png" /></p>
+<p>I think the problem is asking, given a line like in the figure
+below, how to find complex number <script type="math/tex">a</script> and real number <script type="math/tex">b</script>,
+such that as long as <script type="math/tex">z</script> satisfy</p>
+<p>
+<script type="math/tex">az + \overline{a}\overline{z}+b = 0</script>, then <script type="math/tex">z</script> will be
+on that line.</p>
+<p>Assume the distance between <script type="math/tex">0</script> and the line is <script type="math/tex">d</script>,
+and the angle between x-axis and the dash line is
+<script type="math/tex">θ_a</script>. From the figure, we can see, if we rotate <script type="math/tex">z</script> clockwise
+by <script type="math/tex">θ_a</script>, to get <script type="math/tex">z'</script>, then <script type="math/tex">z'</script> is on the vertical line.</p>
+<p>So we can have</p>
+<p>
+<script type="math/tex; mode=display"> 
+a = e^{-iθ_a}, b = -2d
+</script>
+</p>
+<p>The if <script type="math/tex">z</script> satisfy <script type="math/tex">az + \overline{a}\overline{z}+b = 0</script>,
+<script type="math/tex">z</script> will be on the line.</p>
+<p>Then slop of the line is <script type="math/tex">\tan (\frac{\pi }{2} - θ_a)</script>.</p>
+<p><img alt="" src="../assets/app_b_2_2.png" /></p>
+<h3 id="b3">B.3.</h3>
+<p>Recall the identity
+<script type="math/tex">|z +w|^2 = |z|^2 +|w|^2 +2\Re\{\overline{z} w\}</script>.</p>
+<p>As a generalization of this, show that</p>
+<p>
+<script type="math/tex; mode=display"> 
+|z +w|^2 +|z + \overline{w}|^2 = 2(|z|^2 +|w|^2)
++ 4 \Re \{z\} \Re \{w\} \\
+|z +w|^2 +|z - \overline{w}|^2 = 2(|z|^2 +|w|^2)
++ 4 \Im \{z\} \Im \{w\} \\
+</script>
+</p>
+<p><strong>Proof</strong>:</p>
+<p>For the first part</p>
+<p>
+<script type="math/tex; mode=display"> 
+2\Re\{\overline{z} w\} + 2\Re\{\overline{z} \overline{w}\} \\
+= 2 \Re \{\overline{z} w +\overline{z} \overline{w} \} \\
+= 2 \Re \{\overline{z} (w + \overline{w}) \} \\
+= 2 \Re \{\overline{z} 2 \Re \{w\} \} \\
+= 4 \Re \{w\} \Re \{\overline{z}\} \\
+= 4 \Re \{w\} \Re \{z\} \\
+</script>
+</p>
+<p>For the second part</p>
+<p>
+<script type="math/tex; mode=display"> 
+2\Re\{\overline{z} w\} + 2\Re\{\overline{z} (-\overline{w})\} \\
+= 2 \Re \{\overline{z} w +\overline{z} (-\overline{w}) \} \\
+= 2 \Re \{\overline{z} (w - \overline{w}) \} \\
+= 2 \Re \{\overline{z} 2 \Im \{w\} i \} \\
+= 4 \Im \{w\} \Re \{\overline{z} i\} \\
+= 4 \Im \{w\} \Im \{z\} \\
+</script>
+</p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ch01ex/" class="btn btn-neutral float-left" title="Chapter 01 Exercises"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ch01ex/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
