@@ -4,6 +4,7 @@ theme: readthedocs
 nav:
   - Home: index.md
   - Chapter 01 Notes : ch01notes.md
+  - Chapter 01 Exercises : ch01ex.md
   - Appendix B : appendix-b.md
 
 extra_javascript: 
