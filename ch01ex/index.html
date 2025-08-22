@@ -56,6 +56,14 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#13-periods-of-sums-and-products">1.3 Periods of sums and products</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#14-different-definitions-of-periodicity">1.4 Diﬀerent definitions of periodicity</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#15-overheard-at-a-problem-session">1.5. Overheard at a problem session ...</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#16-low-voltage">1.6. Low voltage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#17-periodizing-a-triangle">1.7. Periodizing a triangle</a>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -253,6 +261,132 @@ fundamental frequency of <script type="math/tex">g(t)</script>, we find its Four
 = \sin3t·\cos5t
 </script>
 </p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+<h2 id="14-different-definitions-of-periodicity">1.4 Diﬀerent definitions of periodicity</h2>
+<p>(a) Show that <script type="math/tex">f(t)</script> is periodic of period <script type="math/tex">p</script> if and only if
+<script type="math/tex">f(t−p) = f(t)</script> for all <script type="math/tex">t</script>. The upshot is that it doesn’t matter 
+if we define periodicity as <script type="math/tex">f(t+p) = f(t)</script> or as <script type="math/tex">f(t−p) = f(t)</script>.</p>
+<p><strong>Proof</strong>:</p>
+<p>If <script type="math/tex">f(t)</script> is periodic, then <script type="math/tex">f(t+p) = f(t)</script>,
+let <script type="math/tex">s = t + p</script>, then <script type="math/tex">t = s - p</script>. So we have</p>
+<p>
+<script type="math/tex; mode=display"> 
+f(s−p) = f(s), \forall s
+</script>
+</p>
+<p>The other side is the same.</p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+<p>(b) Show that <script type="math/tex">f(t)</script> is periodic of period <script type="math/tex">p</script> if and only if
+<script type="math/tex">f(t + p/2) = f(t−p/2)</script> for all <script type="math/tex">t</script>.</p>
+<p><strong>Proof</strong>: </p>
+<p>If <script type="math/tex">f(t)</script> is periodic, then <script type="math/tex">f(t+p) = f(t)</script>,
+let <script type="math/tex">s = t - p/2</script>, then <script type="math/tex">t = s + p/2</script>. So we have</p>
+<p>
+<script type="math/tex; mode=display"> 
+f(s + p/2) = f(s−p/2), \forall s
+</script>
+</p>
+<p>The other side is the same.</p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+<h2 id="15-overheard-at-a-problem-session">1.5. Overheard at a problem session ...</h2>
+<p>Suppose two sinusoids have the same frequency but possibly 
+diﬀerent amplitudes and phases. What about their sum? Each of the 
+following answers was proposed at a problem session:</p>
+<p>(a) Has twice the frequency of the original sinusoids.</p>
+<p>(b) Is either zero or has exactly the same frequency as the original sinusoids.</p>
+<p>(c) May exhibit beats.</p>
+<p>(d) Is not necessarily periodic at all.</p>
+<p>Which is correct, and why?
+(Hint: Think in terms of complex exponentials.)</p>
+<p><strong>Solution</strong>: This is covered at the end of Appendix B.</p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+<h2 id="16-low-voltage">1.6. Low voltage</h2>
+<p>A periodic voltage is given by</p>
+<p>
+<script type="math/tex; mode=display"> 
+v(t) = 3 \cos (2πν_1t−1.3)+5 \cos (2πν_2t+0.5).
+</script>
+</p>
+<p>Regardless of the frequencies <script type="math/tex">ν_1</script>, <script type="math/tex">ν_2</script>, the maximum voltage is 
+always less than <script type="math/tex">8</script>, but it can be much smaller. Use MATLAB (or 
+another program) to find
+the maximum voltage if <script type="math/tex">ν_1 = 2</script> Hz and <script type="math/tex">ν_2 = 1</script> Hz.</p>
+<p><strong>Solution</strong>:</p>
+<p>Here is the python code</p>
+<pre><code class="language-python">t = np.arange(0, 2, 0.01)
+
+f = 3 * np.cos(2 * np.pi * 2 * t - 1.3) + 5 * np.cos(2 * np.pi * 1 * t + 0.5)
+plt.plot(t, f)
+plt.show()
+
+print(max(np.around(f, 4)), min(np.around(f, 4)))
+5.7807 -7.6865
+</code></pre>
+<h2 id="17-periodizing-a-triangle">1.7. Periodizing a triangle</h2>
+<p>The triangle function with a parameter <script type="math/tex">p > 0</script> is</p>
+<p>
+<script type="math/tex; mode=display"> 
+\Lambda_p(t) =
+\begin{cases}
+    1 - \frac{1}{p}|t|, &|t| \leq p, \\
+    0, &|t| \geq p. \\
+\end{cases}  
+</script>
+</p>
+<p>We’ll be seeing it a lot. When <script type="math/tex">p = 1</script>
+(the model case in many instances), we simplify the notation to 
+just <script type="math/tex">Λ(t)</script>.</p>
+<p>Note that <script type="math/tex">Λ_p(t) = Λ(t/p)</script>.</p>
+<p>The parameter <script type="math/tex">p</script> specifies the length of the base, namely <script type="math/tex">2p</script>. 
+Alternately, <script type="math/tex">p</script> determines the slopes of the sides: the left side 
+has slope <script type="math/tex">1/p</script> and the right side has slope <script type="math/tex">−1/p</script>.</p>
+<p>Now for <script type="math/tex">T > 0</script> define</p>
+<p>
+<script type="math/tex; mode=display"> 
+g(t) = \sum_{n = -\infty}^{\infty}
+Λ_p(t - nT)
+</script>
+</p>
+<p>Anwser:</p>
+<p>(a) For <script type="math/tex">p = 1/2</script> and <script type="math/tex">T = 1/2, T = 3/4, T = 1, T = 2</script>,
+sketch the graphs of <script type="math/tex">g(t)</script>. Periodic? In each case what is the 
+period?</p>
+<p><strong>Solution</strong>:</p>
+<p><img alt="" src="../assets/ex010701.png" /></p>
+<p><img alt="" src="../assets/ex010702.png" /></p>
+<p><img alt="" src="../assets/ex010703.png" /></p>
+<p><img alt="" src="../assets/ex010704.png" /></p>
+<p>The period are <script type="math/tex">0, 6/8, 1, 2</script> respectively.</p>
+<p>(b) In which of these cases is it possible to recover the original 
+signal <script type="math/tex">Λ_{1/2}(t)</script> from the sum <script type="math/tex">g(t)</script>? What operation would you 
+apply to <script type="math/tex">g(t)</script> to do this?</p>
+<p><strong>Solution</strong>:</p>
+<p>When <script type="math/tex">T = 1, 2</script>. We can times <script type="math/tex">g(t)</script> with the following <script type="math/tex">h(t)</script>
+</p>
+<p>
+<script type="math/tex; mode=display"> 
+h(t) =
+\begin{cases}
+    1 &\text{if } -1/2 \leq t \leq 1/2 \\
+    0 &\text{otherwise } \\
+\end{cases} 
+</script>
+</p>
+<p>
+<script type="math/tex">\square</script>
+</p>
+<p>(c) In general, what condition on <script type="math/tex">p</script> and <script type="math/tex">T</script> will guarantee that 
+<script type="math/tex">Λ_p(t)</script> can be recovered from the sum <script type="math/tex">g(t)</script>?</p>
+<p><strong>Solution</strong>:</p>
+<p>In general, we need <script type="math/tex">T \geq 2p</script>.</p>
 <p>
 <script type="math/tex">\square</script>
 </p>
