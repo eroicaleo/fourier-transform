@@ -186,3 +186,161 @@ $$
 $$
 
 $\square$
+
+## 1.4 Diﬀerent definitions of periodicity
+
+(a) Show that $f(t)$ is periodic of period $p$ if and only if
+$f(t−p) = f(t)$ for all $t$. The upshot is that it doesn’t matter 
+if we define periodicity as $f(t+p) = f(t)$ or as $f(t−p) = f(t)$.
+
+**Proof**:
+
+If $f(t)$ is periodic, then $f(t+p) = f(t)$,
+let $s = t + p$, then $t = s - p$. So we have
+
+$$ 
+f(s−p) = f(s), \forall s
+$$
+
+The other side is the same.
+
+$\square$
+
+(b) Show that $f(t)$ is periodic of period $p$ if and only if
+$f(t + p/2) = f(t−p/2)$ for all $t$.
+
+**Proof**: 
+
+If $f(t)$ is periodic, then $f(t+p) = f(t)$,
+let $s = t - p/2$, then $t = s + p/2$. So we have
+
+$$ 
+f(s + p/2) = f(s−p/2), \forall s
+$$
+
+The other side is the same.
+
+$\square$
+
+## 1.5. Overheard at a problem session ...
+
+Suppose two sinusoids have the same frequency but possibly 
+diﬀerent amplitudes and phases. What about their sum? Each of the 
+following answers was proposed at a problem session:
+
+(a) Has twice the frequency of the original sinusoids.
+
+(b) Is either zero or has exactly the same frequency as the original sinusoids.
+
+(c) May exhibit beats.
+
+(d) Is not necessarily periodic at all.
+
+Which is correct, and why?
+(Hint: Think in terms of complex exponentials.)
+
+**Solution**: This is covered at the end of Appendix B.
+
+$\square$
+
+## 1.6. Low voltage
+
+A periodic voltage is given by
+
+$$ 
+v(t) = 3 \cos (2πν_1t−1.3)+5 \cos (2πν_2t+0.5).
+$$
+
+Regardless of the frequencies $ν_1$, $ν_2$, the maximum voltage is 
+always less than $8$, but it can be much smaller. Use MATLAB (or 
+another program) to find
+the maximum voltage if $ν_1 = 2$ Hz and $ν_2 = 1$ Hz.
+
+**Solution**:
+
+Here is the python code
+
+```python
+t = np.arange(0, 2, 0.01)
+
+f = 3 * np.cos(2 * np.pi * 2 * t - 1.3) + 5 * np.cos(2 * np.pi * 1 * t + 0.5)
+plt.plot(t, f)
+plt.show()
+
+print(max(np.around(f, 4)), min(np.around(f, 4)))
+5.7807 -7.6865
+```
+
+## 1.7. Periodizing a triangle
+
+The triangle function with a parameter $p > 0$ is
+
+$$ 
+\Lambda_p(t) =
+\begin{cases}
+    1 - \frac{1}{p}|t|, &|t| \leq p, \\
+    0, &|t| \geq p. \\
+\end{cases}  
+$$
+
+We’ll be seeing it a lot. When $p = 1$
+(the model case in many instances), we simplify the notation to 
+just $Λ(t)$.
+
+Note that $Λ_p(t) = Λ(t/p)$.
+
+The parameter $p$ specifies the length of the base, namely $2p$. 
+Alternately, $p$ determines the slopes of the sides: the left side 
+has slope $1/p$ and the right side has slope $−1/p$.
+
+Now for $T > 0$ define
+
+$$ 
+g(t) = \sum_{n = -\infty}^{\infty}
+Λ_p(t - nT)
+$$
+
+Anwser:
+
+(a) For $p = 1/2$ and $T = 1/2, T = 3/4, T = 1, T = 2$,
+sketch the graphs of $g(t)$. Periodic? In each case what is the 
+period?
+
+**Solution**:
+
+![](./assets/ex010701.png)
+
+![](./assets/ex010702.png)
+
+![](./assets/ex010703.png)
+
+![](./assets/ex010704.png)
+
+The period are $0, 6/8, 1, 2$ respectively.
+
+(b) In which of these cases is it possible to recover the original 
+signal $Λ_{1/2}(t)$ from the sum $g(t)$? What operation would you 
+apply to $g(t)$ to do this?
+
+**Solution**:
+
+When $T = 1, 2$. We can times $g(t)$ with the following $h(t)$
+
+$$ 
+h(t) =
+\begin{cases}
+    1 &\text{if } -1/2 \leq t \leq 1/2 \\
+    0 &\text{otherwise } \\
+\end{cases} 
+$$
+
+$\square$
+
+(c) In general, what condition on $p$ and $T$ will guarantee that 
+$Λ_p(t)$ can be recovered from the sum $g(t)$?
+
+**Solution**:
+
+In general, we need $T \geq 2p$.
+
+$\square$
